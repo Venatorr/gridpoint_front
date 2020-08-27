@@ -1,0 +1,25 @@
+<div class="p-4">
+    <div class="container">
+        <p>Данные из файла {{ fileName }}, страница {{ page }}</p>
+
+        <nav class="table-responsive mb-2">
+          <ul class="pagination">
+            <li *ngFor="let i of pages" class="page-item">
+              <a class="page-link" routerLink="/data"
+                 [queryParams]="{'file-id':fileId, 'page': i, 'filename': fileName}" routerLinkActive="active">{{ i }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <table class="table table-striped w-50">
+          <th>num</th><th>X</th><th>Y</th><th>Z</th><th>i</th>
+          <tr *ngFor="let line of data; index as i">
+            <td>{{pageLength*(page-1) + i+1}}</td>
+            <td>{{line.x}}</td>
+            <td>{{line.y}}</td>
+            <td>{{line.z}}</td>
+            <td>{{line.i}}</td>
+          </tr>
+        </table>
+    </div>
+</div>

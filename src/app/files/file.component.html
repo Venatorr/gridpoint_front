@@ -1,0 +1,22 @@
+<div class="p-4">
+    <div class="container">
+        <p>Файлы:</p>
+        <nav class="table-responsive mb-2">
+          <ul class="pagination">
+            <li *ngFor="let i of pages" class="page-item">
+              <a class="page-link" routerLink="/files"
+                 [queryParams]="{'page': i}" routerLinkActive="active">{{ i }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <ul>
+          <li *ngFor="let file of files">
+            Файл: <a routerLink="/data"
+                     [queryParams]="{'file-id':file.id, 'page': 1, 'filename': file.name}"
+                     routerLinkActive="active">{{ file.name }}
+            </a>; добавлен: {{ file.add_date | date:'medium' }}
+          </li>
+        </ul>
+    </div>
+</div>
